@@ -1,4 +1,4 @@
-# Projet-develeoppement-logiciel
+# Projet-developpement-logiciel
 
  👉🏻 .C' est un projet de développemnt d'application web de création dun restaurant appelé Mangez et cassez-vous
  Programmé en Vue-JS comme framework  et Javascript
