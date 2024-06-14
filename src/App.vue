@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <nav class="navbar">
-      <router-link to="/" exact>Home</router-link> |
-      <router-link to="/about">About</router-link> |
+      <router-link to="/" exact>Accueil</router-link> |
+      <router-link to="/about">A propos</router-link> |
       <router-link to="/reservation">Reservation</router-link> |
       <router-link to="/contact">Contact</router-link>
     
