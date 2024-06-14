@@ -11,7 +11,8 @@
 ## Description du projet 
  
 - L'utilisateur a la possibilité de voir les spécialités du restaurant   
--  L'utilisateur a la possibilité de nous contacter pour faire une commande 
+- L'utilisateur a la possibilité de nous contacter pour faire une commande
+- L'utilisateur a la possibilité de faire une réservation 
 ---
 
 
