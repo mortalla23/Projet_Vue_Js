@@ -4,7 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '@/views/AboutView.vue';
 import ContactView from '@/views/ContactView.vue';
 import ReservationsVue from '@/views/ReservationsVue.vue';
-
+import PaymentView from '@/views/PaymentView.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -27,7 +27,12 @@ const routes = [
     path:'/reservation',
     name: 'Reservation',
     component: ReservationsVue
-  }
+  },
+  {
+    path: '/payment',
+    name: 'payment',
+    component: PaymentView
+  },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.

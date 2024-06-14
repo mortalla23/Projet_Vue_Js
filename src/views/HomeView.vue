@@ -1,35 +1,42 @@
 <template>
   <div :style="backgroundStyle" id="home" class="home">
-    <h1 class="animate__animated animate__fadeInDown">{{ restaurantName }}</h1>
-    <p class="description animate__animated animate__fadeInUp">
-      Bienvenue dans notre restaurant {{ restaurantName }}! 
-      Ici le client est roi. Faites vous plaisir.
-    </p>
-
-    <section class="menu animate__animated animate__fadeIn">
-      <h3>Menu</h3>
-      <div class="menu-items">
-        <MenuItem
-          v-for="item in simpleMenu"
-          :key="item.label"
-          @add-items-to-cart="addToShop"
-          :quantity="item.quantity"
-          :label="item.label"
-          :image="item.image"
-          :inStock="item.inStock"
-          :price="item.price"
-        />
-      </div>
-    </section>
-    <aside class="shop animate__animated animate__fadeInRight">
-      <h5>Panier d'achat: {{ shop }} articles</h5>
-    </aside>  
-
+    <header>
+      <h1 class="animate__animated animate__fadeInDown">{{ restaurantName }}</h1>
+      <p class="description animate__animated animate__fadeInUp">
+        Bienvenue dans notre restaurant {{ restaurantName }}! 
+        Ici le client est roi. Faites vous plaisir.
+      </p>
+    </header>
+    <main class="content animate__animated animate__fadeIn">
+      <section class="menu">
+        <h3>Menu</h3>
+        <div class="menu-items">
+          <MenuItem
+            v-for="item in simpleMenu"
+            :key="item.label"
+            @add-items-to-cart="addToShop"
+            :quantity="item.quantity"
+            :label="item.label"
+            :image="item.image"
+            :inStock="item.inStock"
+            :price="item.price"
+          />
+        </div>
+      </section>
+      <aside class="shop">
+        <h5>Panier d'achat: {{ shop }} articles</h5>
+        <router-link to="/payment">
+          <button>Procéder au paiement</button>
+        </router-link>
+      </aside>
+    </main>
     <footer class="footer animate__animated animate__fadeInUp">
       <p>{{ copyright }}</p>
     </footer>
   </div>
 </template>
+
+
 <script>
 import MenuItem from '../components/MenuItem.vue';
 import { mapGetters, mapState } from 'vuex';
@@ -56,7 +63,7 @@ export default {
         backgroundPosition: 'center center',
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
-        height: '100vh',
+        height: '100%',
         width: '100%',
         position: 'fixed',
         top: '0',
@@ -72,7 +79,8 @@ export default {
   },
 }
 </script>
-<style lang="scss">
+
+<style scoped>
 @import "~animate.css/animate.min.css";
 
 #home {
@@ -86,13 +94,29 @@ export default {
   position: relative;
   z-index: 1;
   min-height: 100vh;
-  overflow: auto; /* Ajoute le défilement si le contenu dépasse la hauteur de la fenêtre */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Permet le défilement vertical */
 }
 
-.description, .menu, .shop, .footer {
+header {
+  flex-shrink: 0;
+}
+
+main.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.description, .menu, .shop {
   background: rgba(0, 0, 0, 0.5); /* Ajoutez un fond semi-transparent pour améliorer la lisibilité */
   padding: 20px;
   border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .description {
@@ -104,14 +128,10 @@ export default {
 .footer {
   font-style: italic;
   text-align: center;
-  margin-top: 20px;
-}
-
-.menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5); /* Ajoutez un fond semi-transparent pour améliorer la lisibilité */
+  width: 100%;
+  flex-shrink: 0; /* Assure que le footer ne rétrécit pas */
 }
 
 .menu-items {
@@ -144,40 +164,51 @@ export default {
 }
 
 .shop {
-  position: absolute;
-  right: 30px;
-  top: 0;
+  position: relative;
   padding: 10px;
   border-radius: 5px;
+  background: rgba(0, 0, 0, 0.7); /* Assurez une bonne lisibilité */
+  color: #fff;
+}
+
+.shop button {
+  background-color: #ff9800;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.shop button:hover {
+  background-color: #e68900;
 }
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-  .menu-item {
-    width: 95%; /* Augmentez la largeur pour qu'elle prenne plus de place sur les petits écrans */
-    max-width: none; /* Supprimez la limite maximale de largeur */
-    margin: 10px; /* Réduisez l'espacement entre les éléments */
-    padding: 15px; /* Réduisez le padding pour mieux utiliser l'espace */
-  }
-
   .shop {
-    position: relative;
-    right: auto;
-    top: auto;
-    margin-top: 20px;
-    padding: 15px;
-    width: calc(100% - 40px); /* Adaptez la largeur au parent avec des marges */
+    position: static;
+    margin: 20px 0;
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .description {
-    font-size: 1rem; /* Réduisez la taille de police pour les très petits écrans */
+  .shop {
+    padding: 15px;
   }
 
-  .footer {
-    font-size: 0.8rem; /* Réduisez la taille de police du footer */
-    padding: 10px;
+  .shop button {
+    width: 100%;
+    font-size: 14px;
   }
 }
+
+
 </style>
