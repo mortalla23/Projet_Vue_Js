@@ -3,7 +3,9 @@
     <nav class="navbar">
       <router-link to="/" exact>Home</router-link> |
       <router-link to="/about">About</router-link> |
+      <router-link to="/reservation">Reservation</router-link> |
       <router-link to="/contact">Contact</router-link>
+    
     </nav>
     <router-view/>
   </div>

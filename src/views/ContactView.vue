@@ -6,7 +6,7 @@
     <p>Email : {{ mail }}</p>
     <p>Horaires :</p>
     <ul>
-      <li>L-V: 06:00 à 16:00</li>
+      <li>Lundi-Vendredi: 06:00 à 16:00</li>
       <li>Samedi: 07:00 à 14:00</li>
       <li>Dimanche: 07:00 à 12:00</li>
     </ul>
@@ -76,7 +76,7 @@ ul li {
 }
 
 .call-button {
-  background-color: #ff9800;
+  background-color: #00aeff;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -90,6 +90,6 @@ ul li {
 }
 
 .call-button:hover {
-  background-color: #e68900;
+  background-color: #00cbe6;
 }
 </style>
