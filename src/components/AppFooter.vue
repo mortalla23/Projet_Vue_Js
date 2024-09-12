@@ -3,8 +3,8 @@
     <p>&copy; 2024 {{ companyName }}. Tous droits réservés.</p>
     <div class="footer-links">
       <!-- Utilisation de router-link pour les routes internes -->
-      <router-link to="/privacy-policy">Politique de confidentialité</router-link>
-      <router-link to="/terms-of-service">Conditions d'utilisation</router-link>
+      <router-link to="/about">Politique de confidentialité</router-link>
+      <!-- <router-link to="/terms-of-service">Conditions d'utilisation</router-link> -->
     </div>
   </footer>
 </template>
@@ -14,7 +14,7 @@ export default {
   name: 'AppFooter',
   data() {
     return {
-      companyName: "Votre Nom de Restaurant"
+      companyName: "Mangez et cassez-vous"
     };
   }
 };
@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .footer {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(17, 14, 1, 0.8);
   color: white;
   text-align: center;
   padding: 20px;
