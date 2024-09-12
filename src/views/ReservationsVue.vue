@@ -53,11 +53,11 @@
           background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${this.backgroundImage})`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
-          backgroundAttachment: 'fixed',
+          // backgroundAttachment: 'fixed',
           backgroundSize: 'cover',
-          height: '100vh',
           width: '100%',
-          position: 'fixed',
+          position: 'absolute',
+          minHeight: '100vh',
           top: '0',
           left: '0',
           zIndex: '-1'
@@ -89,8 +89,8 @@
     flex-direction: column;
     align-items: center; /* Centre horizontalement */
     justify-content: center; /* Centre verticalement */
-    height: 100vh; /* Prend toute la hauteur de la vue */
     text-align: center;
+    min-height: calc(100vh - 100px);
     color: #fff; /* Change la couleur du texte pour qu'il soit plus lisible */
     background: rgba(0, 0, 0, 0.5); /* Ajoute un fond semi-transparent pour améliorer la lisibilité */
     padding: 20px;
@@ -99,81 +99,88 @@
   }
   
   form {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  text-align: left; /* Assurer un alignement à gauche pour les labels */
+  z-index: 2;
+}
+
+form div {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column; /* Empiler les labels et inputs verticalement */
+}
+
+form label {
+  font-weight: bold;
+  font-size: 16px; /* Augmenter la taille de la police */
+  color: #333; /* Couleur sombre pour un bon contraste */
+  margin-bottom: 5px;
+}
+
+form input {
+  width: 100%; /* Assurer que l'input occupe toute la largeur */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box; /* Garantir que le padding n'affecte pas la taille totale */
+}
+
+form button {
+  background-color: #ff9800;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%; /* Le bouton occupe également toute la largeur */
+}
+
+form button:hover {
+  background-color: #e68900;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .reservation-container {
+    padding: 10px;
   }
-  
-  form div {
-    margin-bottom: 15px;
+
+  form {
+    padding: 15px;
+    max-width: 90%;
   }
-  
-  form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  form input {
-    width: 100%;
-    padding: 3.5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
+
   form button {
-    background-color: #ff9800;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
+    width: 100%;
   }
-  
-  form button:hover {
-    background-color: #e68900;
+}
+
+@media (max-width: 480px) {
+  form {
+    padding: 10px;
   }
-  
-  /* Media Queries for Responsiveness */
-  @media (max-width: 768px) {
-    .reservation-container {
-      padding: 10px;
-    }
-  
-    form {
-      padding: 15px;
-      max-width: 90%;
-    }
-  
-    form button {
-      width: 100%;
-    }
+
+  form label {
+    font-size: 14px;
   }
-  
-  @media (max-width: 480px) {
-    form {
-      padding: 10px;
-    }
-  
-    form label {
-      font-size: 14px;
-    }
-  
-    form input {
-      padding: 8px;
-    }
-  
-    form button {
-      font-size: 14px;
-    }
+
+  form input {
+    padding: 8px;
   }
-  </style>
-  
+
+  form button {
+    font-size: 14px;
+  }
+}
+
+</style>

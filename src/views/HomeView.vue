@@ -30,9 +30,7 @@
         </router-link>
       </aside>
     </main>
-    <footer class="footer animate__animated animate__fadeInUp">
-      <p>{{ copyright }}</p>
-    </footer>
+    <AppFooter />
   </div>
 </template>
 
@@ -61,11 +59,11 @@ export default {
         background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImage})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
-        backgroundAttachment: 'fixed',
+        backgroundAttachment: 'scroll',
         backgroundSize: 'cover',
-        height: '100%',
+        height: '100vh',
         width: '100%',
-        position: 'fixed',
+        position: 'absolute',
         top: '0',
         left: '0',
         zIndex: '-1'
@@ -85,10 +83,8 @@ export default {
 
 #home {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #fff; /* Changez la couleur du texte pour qu'il soit plus lisible */
+  color: #fff;
   margin-top: 60px;
   padding: 20px;
   position: relative;
@@ -96,7 +92,7 @@ export default {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Permet le défilement vertical */
+  overflow-y: auto;
 }
 
 header {
@@ -107,13 +103,14 @@ main.content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Aligner le contenu en haut */
   align-items: center;
   margin-bottom: 20px;
+  margin-top: 20px; /* Ajuste l'espacement supérieur pour éviter le chevauchement */
 }
 
 .description, .menu, .shop {
-  background: rgba(0, 0, 0, 0.5); /* Ajoutez un fond semi-transparent pour améliorer la lisibilité */
+  background: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -126,12 +123,14 @@ main.content {
 }
 
 .footer {
-  font-style: italic;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
   text-align: center;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.5); /* Ajoutez un fond semi-transparent pour améliorer la lisibilité */
+  padding: 20px;
   width: 100%;
-  flex-shrink: 0; /* Assure que le footer ne rétrécit pas */
+  font-size: 14px;
+  margin-top: auto; /* Pour que le footer reste en bas du contenu */
+  position: relative; /* Supprimer le "fixed" */
 }
 
 .menu-items {
@@ -148,8 +147,8 @@ main.content {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  width: 90%; /* Réduisez la largeur ici pour qu'elle soit proportionnelle au parent */
-  max-width: 600px; /* Limite maximale de la largeur */
+  width: 60%;
+  max-width: 405px; /* Réduit la largeur maximale pour un meilleur ajustement */
   text-align: left;
 }
 
@@ -163,11 +162,28 @@ main.content {
   margin-bottom: 10px;
 }
 
+.menu-item .quantity {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.menu-item .quantity input[type="number"] {
+  width: 50px; /* Taille du champ ajustée pour les quantités */
+  margin-left: 10px;
+  text-align: center;
+}
+
+.menu-item .quantity label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
 .shop {
   position: relative;
   padding: 10px;
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.7); /* Assurez une bonne lisibilité */
+  background: rgba(0, 0, 0, 0.7);
   color: #fff;
 }
 
@@ -177,21 +193,49 @@ main.content {
   color: white;
   padding: 10px 20px;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 5px;
   margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
 
 .shop button:hover {
   background-color: #e68900;
 }
 
+.add-to-cart-button {
+  background-color: #28a745; /* Vert pour le bouton ajouter au panier */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+  background-color: #218838; /* Un vert plus foncé au survol */
+}
+
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
+  #home {
+    padding: 5px 10px; /* Réduire le padding sur mobile */
+  }
+
+  main.content {
+    margin-top: 10px; /* Réduire la marge supérieure */
+  }
+  .menu-item {
+    max-width: 100%; /* Les items prennent la largeur totale sur petits écrans */
+  }
+
   .shop {
     position: static;
     margin: 20px 0;
@@ -200,8 +244,12 @@ main.content {
 }
 
 @media (max-width: 480px) {
-  .shop {
-    padding: 15px;
+  .menu-item {
+    padding: 10px;
+  }
+
+  .menu-item .quantity input {
+    width: 40px;
   }
 
   .shop button {

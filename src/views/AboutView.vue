@@ -6,8 +6,8 @@
     </p>
 
     <!-- Bouton flottant pour ajouter un commentaire -->
-    <button class="float-button" @click="openCommentModal">
-      <img src="@/assets/Image/R.png" alt="Comment Icon" />
+    <button class="float-button" @click="openCommentModal" title="Ajout un commentaire">
+      <i class="fas fa-comment"></i>
     </button>
 
     <!-- Modal pour les commentaires -->
@@ -98,7 +98,7 @@ export default {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #00bcd4;
+  background-color: #ff9800;
   color: white;
   border: none;
   border-radius: 50%;
@@ -165,7 +165,7 @@ form textarea {
 }
 
 form button {
-  background-color: #00bcd4;
+  background-color: #ff9800;
   color: white;
   border: none;
   padding: 10px;

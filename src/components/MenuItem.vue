@@ -4,13 +4,13 @@
     <div class="menu-item__details">
       <h4>{{ label }}</h4>
       <p>
-				Prix: {{ generatedPrice }}
-				<span v-if="onSale">(10% de réduction !)</span>
+				Prix: {{ generatedPrice }} €
+				<!-- <span v-if="onSale">(10% de réduction !)</span> -->
 			</p>
       <p v-if="inStock">En stock</p>
       <p v-else>En rupture de stock</p>
       <div>
-        <label for="add-quantity">Quantité :{{ localQuantity }}</label>
+        <!-- <label for="add-quantity">Quantité :{{ localQuantity }}</label> -->
         <input v-model.number="localQuantity" id="add-quantity" type="number" />
         <BaseButton @click="updateShop(localQuantity)">Ajouter au panier</BaseButton>
       </div>
@@ -44,7 +44,7 @@ export default {
   },
   quantity: {
     type:Number,
-    default:1
+    default:0
     
   },
   price: {
