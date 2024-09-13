@@ -154,18 +154,35 @@ export default {
   }
 }
 
-.add-to-cart-btn {
-  background-color: #00aeff;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.2s ease-in-out;
+/* Style pour les petits écrans */
+@media (max-width: 768px) {
+  .menu-item {
+    flex-direction: column;
+    text-align: center;
+  }
 
-  &:hover {
-    background-color: #007bff;
+  .menu-item__image {
+    margin: 0 0 15px 0;
+    max-width: 100px;
+  }
+
+  .menu-item__details {
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .menu-item__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quantity-input {
+    margin-bottom: 10px;
+    width: 100px;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
   }
 }
 </style>
