@@ -69,7 +69,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.85); /* Fond sombre pour plus de contraste */
   padding: 15px 30px;
   box-shadow: none;
   position: fixed;
@@ -97,6 +97,8 @@ export default {
   padding: 8px 15px;
   transition: color 0.3s ease, background-color 0.3s ease;
   border-radius: 5px;
+  color: #ffffff; /* Couleur blanche pour un meilleur contraste */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ajout d'une ombre pour améliorer la lisibilité */
 }
 
 .nav-links a:hover {
@@ -106,7 +108,7 @@ export default {
 .nav-links a.router-link-exact-active {
   font-weight: bold;
   color: #ff9800;
-  background-color: rgba(66, 185, 131, 0.1);
+  background-color: rgba(66, 185, 131, 0.2); /* Arrière-plan plus visible */
   border-radius: 5px;
 }
 
