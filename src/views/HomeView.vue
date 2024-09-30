@@ -1,15 +1,30 @@
 <template>
-  <div :style="backgroundStyle" id="home" class="home">
-    <header>
-      <h1 class="animate__animated animate__fadeInDown">{{ restaurantName }}</h1>
-      <p class="description animate__animated animate__fadeInUp">
-        Bienvenue dans notre restaurant {{ restaurantName }}! 
-        Ici le client est roi. Faites vous plaisir.
-      </p>
-    </header>
-    <main class="content animate__animated animate__fadeIn">
-      <section class="menu">
-        <h3>Menu</h3>
+  <div id="home">
+    <!-- Hero Section with Background Image -->
+    <section :style="heroStyle" class="hero-section">
+      <header class="hero-header">
+        <h1 class="restaurant-name">Manger et cassez-vous</h1>
+        <p class="restaurant-chef">ICI LE CLIENT EST ROI.</p>
+        <p class="restaurant-chef"> Faites vous plaisir. </p>
+        
+        <button @click="scrollToMenu" class="discover-btn">Je découvre</button>
+      </header>
+      <div class="header-icons">
+        <!-- Utilisation des icônes Bootstrap -->
+        <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="#" target="_blank"><i class="bi bi-award"></i> <!-- Icône Michelin peut être représentée par "award" --> </a>
+      </div>
+      <!-- <div class="action-buttons">
+        <button class="newsletter-btn">Newsletter</button>
+        <button class="reserve-btn">Réserver</button>
+      </div> -->
+    </section>
+
+    <!-- Menu Section -->
+    <main class="content">
+      <section id="menu-section" class="menu-section">
+        <h3 class="section-title">Notre Menu</h3>
         <div class="menu-items">
           <MenuItem
             v-for="item in simpleMenu"
@@ -30,233 +45,178 @@
         </router-link>
       </aside>
     </main>
-    <AppFooter />
+    <footer class="footer-section">
+      <div class="footer-content">
+        <p>&copy; 2024 {{ restaurantName }}. Tous droits réservés.</p>
+        <div class="footer-icons">
+          <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
+          <a href="#" target="_blank"><i class="bi bi-twitter"></i></a>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
-
 <script>
 import MenuItem from '../components/MenuItem.vue';
-import { mapGetters, mapState } from 'vuex';
-import backgroundImage from '@/assets/Image/image4.png';
+import { mapState } from 'vuex';
+import backgroundImage from '@/assets/Image/image4.png'; // Remplace ceci avec l'image de fond que tu as
 
 export default {
   name: 'HomeView',
   components: {
-    MenuItem
+    MenuItem,
   },
   computed: {
     ...mapState({
       restaurantName: "restaurantName",
       shop: "shop",
-      simpleMenu: "simpleMenu"
+      simpleMenu: "simpleMenu",
     }),
-    ...mapGetters({
-      copyright: "copyright"
-    }),
-    backgroundStyle() {
+    heroStyle() {
       return {
-        background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImage})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center center',
-        backgroundAttachment: 'scroll',
+        backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
+        backgroundPosition: 'center center',
         height: '100vh',
-        width: '100%',
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        zIndex: '-1'
+        position: 'relative',
       };
-    }
+    },
   },
   methods: {
     addToShop(amount) {
       this.$store.dispatch('addToShop', amount);
     },
+    scrollToMenu() {
+      const menuSection = document.getElementById("menu-section");
+      menuSection.scrollIntoView({ behavior: "smooth" });
+    },
   },
-}
+};
 </script>
 
 <style scoped>
-@import "~animate.css/animate.min.css";
-
-#home {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: center;
-  color: #fff;
-  margin-top: 60px;
+  color: white;
   padding: 20px;
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
 }
 
-header {
-  flex-shrink: 0;
+.hero-header {
+  padding-top: 100px;
 }
 
-main.content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Aligner le contenu en haut */
-  align-items: center;
-  margin-bottom: 20px;
-  margin-top: 20px; /* Ajuste l'espacement supérieur pour éviter le chevauchement */
+.restaurant-name {
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.description, .menu, .shop {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.description {
-  max-width: 960px;
+.restaurant-chef {
   font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+
+.discover-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 50px;
+  margin-top: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+.discover-btn:hover {
+  background-color: #333;
+}
+.header-icons {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.header-icons a {
+  margin: 0 10px;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.action-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+
+.content {
+  padding-top: 20px;
+}
+
+.menu-section {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.footer {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  text-align: center;
-  padding: 20px;
-  width: 100%;
-  font-size: 14px;
-  margin-top: auto; /* Pour que le footer reste en bas du contenu */
-  position: relative; /* Supprimer le "fixed" */
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #ffcc00; /* Couleur jaune pour le titre */
+  text-align: center; /* Centrer le texte horizontalement */
 }
+
 
 .menu-items {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-}
-
-.menu-item {
-  background: rgba(255, 255, 255, 0.9);
-  color: #2c3e50;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  width: 60%;
-  max-width: 405px; /* Réduit la largeur maximale pour un meilleur ajustement */
-  text-align: left;
-}
-
-.menu-item:hover {
-  transform: translateY(-10px);
-}
-
-.menu-item img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.menu-item .quantity {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.menu-item .quantity input[type="number"] {
-  width: 50px; /* Taille du champ ajustée pour les quantités */
-  margin-left: 10px;
-  text-align: center;
-}
-
-.menu-item .quantity label {
-  margin-right: 10px;
-  font-weight: bold;
+  justify-content: space-around;
 }
 
 .shop {
-  position: relative;
-  padding: 10px;
-  border-radius: 5px;
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-}
-
-.shop button {
-  background-color: #ff9800;
-  border: none;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
   color: white;
-  padding: 10px 20px;
+  width: 300px;
+  margin: 20px auto; /* Centrer la section horizontalement */
+  text-align: center; /* Centrer le contenu à l'intérieur */
+}
+/* Footer Styling */
+.footer-section {
+  background-color: #333;
+  padding: 20px 0;
   text-align: center;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.shop button:hover {
-  background-color: #e68900;
-}
-
-.add-to-cart-button {
-  background-color: #28a745; /* Vert pour le bouton ajouter au panier */
-  border: none;
   color: white;
-  padding: 10px 15px;
-  text-align: center;
-  font-size: 16px;
-  margin-top: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  margin-top: 40px;
 }
 
-.add-to-cart-button:hover {
-  background-color: #218838; /* Un vert plus foncé au survol */
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-  #home {
-    padding: 5px 10px; /* Réduire le padding sur mobile */
-  }
-
-  main.content {
-    margin-top: 10px; /* Réduire la marge supérieure */
-  }
-  .menu-item {
-    max-width: 100%; /* Les items prennent la largeur totale sur petits écrans */
-  }
-
-  .shop {
-    position: static;
-    margin: 20px 0;
-    width: 100%;
-  }
+.footer-icons a {
+  margin: 0 10px;
+  font-size: 1.5rem;
+  color: white;
 }
 
-@media (max-width: 480px) {
-  .menu-item {
-    padding: 10px;
-  }
-
-  .menu-item .quantity input {
-    width: 40px;
-  }
-
-  .shop button {
-    width: 100%;
-    font-size: 14px;
-  }
+.footer-icons a:hover {
+  color: #ffcc00; /* Couleur de survol */
 }
 
-
+.footer-content p {
+  margin-bottom: 10px;
+}
 </style>

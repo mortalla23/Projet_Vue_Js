@@ -11,17 +11,17 @@
     <div class="content">
       <router-view/>
     </div>
-    <AppFooter />
+    <!-- <AppFooter /> -->
   </div>
 </template>
 
 <script>
-import AppFooter from './components/AppFooter.vue';
+// import AppFooter from './components/AppFooter.vue';
 
 export default {
-  components: {
-    AppFooter
-  },
+  // components: {
+  //   AppFooter
+  // },
   name: 'App',
 }
 </script>
