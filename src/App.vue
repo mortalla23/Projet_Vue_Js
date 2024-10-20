@@ -39,31 +39,7 @@ export default {
   overflow: auto; /* Permet le défilement si nécessaire */
 }
 
-/* Footer placé normalement */
-.footer {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  text-align: center;
-  padding: 20px;
-  width: 100%;
-  font-size: 14px;
-  margin-top: auto; /* Assure que le footer est à la fin du contenu */
-  position: relative; /* Assure que le footer reste en bas de la page sans chevaucher le contenu */
-}
 
-.footer-links {
-  margin-top: 10px;
-}
-
-.footer-links a {
-  color: #ff9800;
-  margin: 0 10px;
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-}
 
 .navbar {
   display: flex;
