@@ -113,7 +113,8 @@ export default {
   width: 280px; /* Légèrement plus large pour éviter l'effet "étroit" */
   padding: 20px;
   margin: 10px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background: linear-gradient(45deg, #a67c52, #d3b296);
+
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -177,7 +178,8 @@ export default {
 .contact-hours {
   margin-top: 20px;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.4); /* Fond en harmonie avec la section de réservation */
+  background: linear-gradient(45deg, #a67c52, #d3b296);
+ /* Fond en harmonie avec la section de réservation */
   border-radius: 10px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   color: #f0f0f0;

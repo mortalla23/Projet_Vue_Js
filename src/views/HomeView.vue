@@ -524,6 +524,18 @@ export default {
   color: white;
   padding: 20px;
 }
+.hero-section .header-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute; /* Ajoute position absolue si ce n'est pas déjà le cas */
+    top: 70px; /* Ajuste cette valeur selon la hauteur désirée */
+    left: 20px; /* Assure-toi que cela est aligné à gauche comme souhaité */
+    padding-top: 0; /* Assure-toi qu'il n'y a pas de padding supplémentaire en haut */
+    margin-bottom: 50px;
+}
+
+
 
 .hero-header {
   padding-top: 100px;
@@ -557,17 +569,17 @@ export default {
 .discover-btn:hover {
   background-color: #f18686;
 }
-.header-icons {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
+.header-icons i {
+    font-size: 24px; /* Augmente la taille de l'icône */
+    margin: 0 10px; 
+}
+.header-icons a {
+    color: #ffffff; /* Choisir une couleur qui contraste bien avec l'arrière-plan */
+}
+.header-icons a:hover {
+    color: #f18686; /* Change la couleur au survol */
 }
 
-.header-icons a {
-  margin: 0 10px;
-  font-size: 1.5rem;
-  color: white;
-}
 
 .action-buttons {
   position: absolute;
