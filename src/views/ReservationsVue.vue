@@ -31,7 +31,7 @@
     </div>
   </template>
   <script>
-  import backgroundImage from '@/assets/Image/image4.png';
+  import backgroundImage from '@/assets/Image/backk.png';
   import { mapActions } from 'vuex';
   
   export default {

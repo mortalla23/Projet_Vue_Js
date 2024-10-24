@@ -54,6 +54,7 @@ export default {
     }
   },
   methods: {
+    
     updateShop(quantity) {
       this.$emit("add-items-to-cart", quantity)
     }
@@ -83,22 +84,22 @@ export default {
   align-items: center;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   padding: 20px;
   transition: transform 0.2s ease-in-out;
   margin-bottom: 20px;
 
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-
   &__image {
-    max-width: 150px;
+    max-width: 180px; /* Agrandi pour plus de visibilité */
     height: auto;
     object-fit: cover;
     border-radius: 10px;
     margin-right: 20px;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  &__image:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25); /* Effet d'ombre au survol */
   }
 
   &__details {
@@ -128,13 +129,8 @@ export default {
     }
   }
 
-  &__stock {
-    color: #28a745;
-    font-weight: bold;
-  }
-
-  &__out-stock {
-    color: #e74c3c;
+  &__stock, &__out-stock {
+    font-size: 0.9em;
     font-weight: bold;
   }
 
@@ -152,37 +148,22 @@ export default {
       text-align: center;
     }
   }
-}
-
-/* Style pour les petits écrans */
-@media (max-width: 768px) {
-  .menu-item {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .menu-item__image {
-    margin: 0 0 15px 0;
-    max-width: 100px;
-  }
-
-  .menu-item__details {
-    align-items: center;
-    max-width: 100%;
-  }
-
-  .menu-item__actions {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .quantity-input {
-    margin-bottom: 10px;
-    width: 100px;
-  }
 
   .add-to-cart-btn {
-    width: 100%;
+    background: linear-gradient(45deg, #ff6f61, #ff9800);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .add-to-cart-btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(45deg, #ff4b3a, #ff9800);
   }
 }
 </style>

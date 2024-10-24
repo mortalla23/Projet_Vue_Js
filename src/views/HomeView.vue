@@ -66,9 +66,9 @@
       </header>
       <div class="header-icons">
         <!-- Utilisation des icônes Bootstrap -->
-        <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.instagram.com/mortalla2301/profilecard/?igsh=MXhuaGZ0MDYxZWk2cw==" target="_blank"><i class="bi bi-instagram"></i></a>
         <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
-        <a href="#" target="_blank"><i class="bi bi-award"></i> <!-- Icône Michelin peut être représentée par "award" --> </a>
+        <a href="https://www.linkedin.com/in/mor-talla-047893266?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="bi bi-linkedin"></i> </a>
       </div>
       
       <!-- <div class="action-buttons">
@@ -106,22 +106,26 @@
         <div class="testimonials">
           <div class="testimonial" v-for="(testimonial, index) in testimonials" :key="index">
             <div class="author-info">
-              <!-- Ajout de l'image/avatar ici -->
               <img :src="testimonial.avatar" alt="Avatar de l'auteur" class="testimonial-avatar">
-              <strong>{{ testimonial.author }}</strong>
+              <strong class="author-name">{{ testimonial.author }}</strong>
             </div>
-            <strong>{{ testimonial.comment }}</strong>
+            <p class="testimonial-comment">"{{ testimonial.comment }}"</p>
+            <div class="rating">
+              <span v-for="n in 5" :key="n" class="star">&#9733;</span>
+            </div>
           </div>
         </div>
       </section>
+
     </main>
     <footer class="footer-section">
       <div class="footer-content">
         <p>&copy; 2024 {{ restaurantName }}. Tous droits réservés.</p>
         <div class="footer-icons">
-          <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.instagram.com/mortalla2301/profilecard/?igsh=MXhuaGZ0MDYxZWk2cw==" target="_blank"><i class="bi bi-instagram"></i></a>
           <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
-          <a href="#" target="_blank"><i class="bi bi-twitter"></i></a>
+          <a href="https://www.linkedin.com/in/mor-talla-047893266?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="bi bi-linkedin"></i></a>
+
         </div>
       </div>
     </footer>
@@ -132,7 +136,7 @@
 import MenuItem from '../components/MenuItem.vue';
 // import { Map, Marker } from 'vue2-google-maps';
 import { mapState } from 'vuex';
-import backgroundImage from '@/assets/Image/image4.png'; // Remplace ceci avec l'image de fond que tu as
+import backgroundImage from '@/assets/Image/backk.png'; // Remplace ceci avec l'image de fond que tu as
 
 export default {
   name: 'HomeView',
@@ -150,9 +154,9 @@ export default {
       notificationMessage: '', // Message de la notification
       notificationTimeout: null, // Pour gérer le délai d'affichage de la notification
       testimonials: [
-        { comment: 'Le meilleur restaurant de la ville !', author: 'Marie Dupont',avatar: require('@/assets/Image/fImage.png')},
-        { comment: 'Super expérience, plats délicieux.', author: 'Mor Talla' ,avatar: require('@/assets/Image/photo.jpg')},
-        { comment: 'Un service impeccable, je reviendrai !', author: 'Alice Bernard' ,avatar: require('@/assets//Image/vieux.png')},
+        { comment: 'Je recommande cet endroit. Produit de très bonne qualité pour un prix raisonnable.   Accueil est excellent et l’ endroit est très propre.  Bonne continuation à toute léquipe de Mangez et cassez vous', author: 'Marie Dupont',avatar: require('@/assets/Image/fImage.png')},
+        { comment: 'Les Burgers sont exceptionnels, c’est toujours un régal, le ventre plein à craquer. La déco super original . Et la serveuse très agréable. C’est toujours un plaisir de venir.', author: 'Mor Talla' ,avatar: require('@/assets/Image/photo.jpg')},
+        { comment: 'Les burgers sont super bon, autant la viande que le pain. Un vrai régal.C’est une bonne adresse si vous souhaitez vous remplir le ventre avec des produits de qualité, et les tarifs sont franchement raisonnables !Je recommande, de plus très bon accueil', author: 'Alice Bernard' ,avatar: require('@/assets//Image/vieux.png')},
       ]
       // deliveryMode: 'delivery',
       // deliveryAddress: '',
@@ -374,40 +378,63 @@ export default {
 /* Testimonials Section */
 .testimonials-section {
   padding: 40px;
-  background-color: rgba(0, 0, 0, 0.8);
-  max-width: 1200px; /* Limiter la largeur */
-  margin: 0 auto; /* Centrer la section */
+  background-color: rgba(0, 0, 0, 0.7); /* Light background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .testimonials {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px; /* Limit the width of the testimonial container */
 }
 
 .testimonial {
-  max-width: 300px;
-  margin: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Set fixed width for each testimonial */
   text-align: center;
-  flex: 1 1 300px; 
-  color: white;
 }
 
-.testimonial p {
+.author-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.testimonial-avatar {
+  width: 80px; /* Adjust the size of avatar */
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.author-name {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.testimonial-comment {
   font-style: italic;
   margin-bottom: 10px;
+  color: #666;
+}
+
+.rating {
   color: #ffcc00;
 }
 
-.testimonial strong {
-  font-weight: bold;
+.star {
+  font-size: 1.2rem;
+  margin: 0 2px;
 }
-.author-info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
+
 
 .testimonial-avatar {
   width: 40px; /* Taille de l'image d'avatar */
@@ -517,7 +544,7 @@ export default {
 
 
 .discover-btn {
-  background-color: black;
+  background: linear-gradient(45deg, #ff6f61, #ff9800);
   color: white;
   border: none;
   padding: 10px 50px;
@@ -528,7 +555,7 @@ export default {
   transition: background-color 0.3s ease;
 }
 .discover-btn:hover {
-  background-color: #333;
+  background-color: #f18686;
 }
 .header-icons {
   display: flex;
@@ -577,17 +604,49 @@ export default {
 }
 
 .shop {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
   padding: 20px;
-  border-radius: 10px;
-  color: white;
-  width: 300px;
-  margin: 20px auto; /* Centrer la section horizontalement */
-  text-align: center; /* Centrer le contenu à l'intérieur */
+  border-radius: 15px;
+  color: #f0f0f0;
+  width: 320px;
+  margin: 20px auto;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Ajout d'une ombre pour un effet de profondeur */
+  transition: transform 0.3s ease-in-out; /* Effet de transition */
 }
+
+.shop:hover {
+  transform: translateY(-5px); /* Légère élévation au survol */
+}
+
+.shop h5 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.shop button {
+  background: linear-gradient(45deg, #ff6f61, #ff9800);; /* Une couleur vive pour le bouton */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px; /* Coins arrondis pour un style plus doux */
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Effet de transition pour un hover fluide */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre pour donner de la profondeur */
+}
+
+.shop button:hover {
+  background-color: #ff4b3a; /* Changement de couleur au survol */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Accentuer l'ombre au survol */
+  transform: translateY(-2px); /* Effet de léger soulèvement au survol */
+}
+
+
 /* Footer Styling */
 .footer-section {
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 20px 0;
   text-align: center;
   color: white;

@@ -32,7 +32,7 @@
   
   <script>
   import { mapState } from 'vuex';
-  import backgroundImage from '@/assets/Image/image4.png';
+  import backgroundImage from '@/assets/Image/backk.png';
   
   export default {
     name: 'PaymentView',
